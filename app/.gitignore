@@ -25,4 +25,7 @@ extra/exe-builder/obj
 .vs
 .vscode
 
-Dockerfile
+compose.yaml
+
+app/extra/uptime-kuma-push/Dockerfile
+app/docker/dockerfile
