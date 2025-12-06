@@ -1,5 +1,6 @@
 node_modules
 .DS_Store
+../.DS_Store
 dist
 dist-ssr
 *.local
@@ -29,3 +30,12 @@ compose.yaml
 
 app/extra/uptime-kuma-push/Dockerfile
 app/docker/dockerfile
+
+#my docs
+metrics.csv
+measure-build.sh
+build-clean.log
+
+#Don't ignore
+!.env.example
+
