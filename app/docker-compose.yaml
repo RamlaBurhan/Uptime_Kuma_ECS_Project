@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  mariadb:
+    image: mariadb:10.11
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - mariadb-data:/var/lib/mysql
+   
+
+  uptime-kuma:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "${UPTIME_KUMA_PORT}:3001"
+    environment:
+      UPTIME_KUMA_DB_TYPE: ${UPTIME_KUMA_DB_TYPE}
+      UPTIME_KUMA_DB_HOSTNAME: ${UPTIME_KUMA_DB_HOSTNAME}
+      UPTIME_KUMA_DB_PORT: ${UPTIME_KUMA_DB_PORT}
+      UPTIME_KUMA_DB_NAME: ${UPTIME_KUMA_DB_NAME}
+      UPTIME_KUMA_DB_USERNAME: ${UPTIME_KUMA_DB_USERNAME}
+      UPTIME_KUMA_DB_PASSWORD: ${UPTIME_KUMA_DB_PASSWORD}
+    depends_on:
+      - mariadb
+       
+
+volumes:
+  mariadb-data:
