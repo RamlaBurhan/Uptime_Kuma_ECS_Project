@@ -1,4 +1,8 @@
-FROM node:20-alpine
+ARG APP_VERSION=1.0.0
+
+FROM node:20-alpine:sha256:643e7036aa985317ebfee460005e322aa550c6b6883000d01daefb58689a58e2
+
+LABEL version="${APP_VERSION}"
 
 WORKDIR /app
 
