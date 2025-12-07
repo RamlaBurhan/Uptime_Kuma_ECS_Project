@@ -29,7 +29,7 @@ extra/exe-builder/obj
 compose.yaml
 
 app/extra/uptime-kuma-push/Dockerfile
-app/docker/dockerfile
+app/docker
 
 #my docs
 metrics.csv
@@ -39,3 +39,5 @@ build-clean.log
 #Don't ignore
 !.env.example
 
+
+.md 
