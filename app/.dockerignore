@@ -1,5 +1,5 @@
 /.idea
-/node_modules
+node_modules
 /data*
 /out
 /test
@@ -26,7 +26,7 @@ CNAME
 install.sh
 SECURITY.md
 tsconfig.json
-.env
+!.env
 /tmp
 /ecosystem.config.js
 /extra/healthcheck.exe

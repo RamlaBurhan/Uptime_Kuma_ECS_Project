@@ -1979,3 +1979,9 @@ let unexpectedErrorHandler = (error, promise) => {
 };
 process.addListener("unhandledRejection", unexpectedErrorHandler);
 process.addListener("uncaughtException", unexpectedErrorHandler);
+
+
+// HEALTHCHECK - NEW
+app.get("/health", (req, res) => {
+  res.status(200).json({ status: "ok" });
+});

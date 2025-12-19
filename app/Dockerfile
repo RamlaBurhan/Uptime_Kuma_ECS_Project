@@ -1,25 +1,26 @@
-FROM node:20-alpine@sha256:643e7036aa985317ebfee460005e322aa550c6b6883000d01daefb58689a58e2
-
-ARG APP_VERSION=1.0.0
-
-LABEL version="${APP_VERSION}"
-LABEL description="Uptime Kuma - Self-hosted monitoring"
-
+FROM node:20-alpine@sha256:643e7036aa985317ebfee460005e322aa550c6b6883000d01daefb58689a58e2 AS builder
 WORKDIR /app
-
 COPY package*.json ./
-
-RUN npm install --legacy-peer-deps 
-
+RUN npm ci --legacy-peer-deps
 COPY . .
-
 RUN npm run build
 
+FROM node:20-alpine@sha256:643e7036aa985317ebfee460005e322aa550c6b6883000d01daefb58689a58e2
+RUN apk add --no-cache curl
+RUN addgroup -S app && adduser -S app -G app
+WORKDIR /app
+RUN mkdir -p /app/data && \
+    chown -R app:app /app
+COPY --chown=app:app package*.json ./
+USER app
+RUN npm ci --only=production --legacy-peer-deps
+COPY --chown=app:app --from=builder /app/dist ./dist
+COPY --chown=app:app --from=builder /app/server ./server
+COPY --chown=app:app --from=builder /app/src ./src  
+COPY --chown=app:app --from=builder /app/db ./db  
 EXPOSE 3001
 
-# tests if server responds on port 3001
-#alpine doesn't have curl
-HEALTHCHECK --interval=30s --timeout=3s --start-period=40s --retries=3 \
-  CMD wget --quiet --tries=1 --spider http://localhost:3001 || exit 1
+HEALTHCHECK CMD curl -f http://localhost:3001/health || exit 1
 
 CMD ["node", "server/server.js"]
+
