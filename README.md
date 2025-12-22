@@ -1,45 +1,42 @@
-# Uptime_Kuma_ECS_Project
+# Deploying a Self-Hosted Monitoring Tool (Uptime-Kuma) with AWS ECS Fargate, RDS, and EFS
 
 This project showcases a production-grade deployment of a self-hosted monitoring tool (Uptime Kuma) using ECS Fargate, RDS Multi-AZ, and EFS. The infrastructure is managed through modular Terraform and GitHub Actions CI/CD.
 
 
 ## Related Documentations
-**- Design Decisions:** For a detailed breakdown of the architecture and choices, see the [Design Decisions Repository](https://github.com/ramlaburhan/design_decisions.md)
-**- Future improvements:** For planned future iterations and enhancements, please see the [future Improvements Repository](https://github.com/ramlaburhan/future_improvements.md)
+**- Design Decisions:** For a detailed breakdown of the architecture and tradeoffs, see the [Design Decisions Repository](https://github.com/ramlaburhan/design_decisions.md) \
+**- Future improvements:** For planned future iterations and enhancements, please see the [Future Improvements Repository](https://github.com/ramlaburhan/future_improvements.md)
 
 
-## Table of contents
+## Table of Contents
+- [Demo](#demo)
+- [Project management](£project-management)
+- [Architecture Diagram](#architecture-diagram)
+- [Project Structure](#project-structure)
+- [Prerequisites](#prerequisites)
+- [Key Features](#key-features)
+- [Local Development](#local-development)
+- [AWS Deployment](#aws-deployment)
+- [CI/CD Pipelines](#cicd-pipelines)
 
-Demo
-Architecture Diagram
-Project Structure
-Prerequisites
-Key Features
-Local Development
-AWS Deployment
-CI/CD Pipelines
-
-
+---
 
 ## Demo
 
-Project management
-<img width="1121" height="603" alt="Screenshot 2025-12-22 at 08 16 12" src="https://github.com/user-attachments/assets/fcee124a-5459-4e34-a747-d33b3b44f03f" />
+## Project management
 
 
 
-
-## Architecture diagram
+## Architecture Diagram
 <img width="1131" height="1370" alt="ECS Project- 3-tier architecture drawio (1)" src="https://github.com/user-attachments/assets/16865c6d-d6fd-4f3a-8aac-6703774689a0" />
 
+## Project Structure
 
+<!-- Add your project structure here -->
 
+---
 
-## Project structure
-
-
-
-# Prerequisites
+## Prerequisites
 
 **Tools:** Terraform ≥1.6, Docker ≥20.10, AWS CLI, pre-commit ≥3.0
 
@@ -55,23 +52,21 @@ Project management
  **- Github Action:** - Infrastructure changes via PR workflow  
  **- Non-root Containers:** - Security-hardened Docker images  
  **- Zero Downtime:** Rolling deployments with health checks 
-
-## Monitoring & Operations
-**- Logs:** CloudWatch Logs with retention policies \
-**- Metrics:** CloudWatch metrics for ECS, RDS, ALB \
-**- Backups:** Automated RDS snapshots with configurable retention \
+ **- Logs:** CloudWatch Logs with retention policies  
+ **- Metrics:** CloudWatch metrics for ECS, RDS, ALB  
+ **- Backups:** Automated RDS snapshots with configurable retention 
 
 ---
 
 ## Local Development
 
-1. **Clone repository**
+1. **Clone repository:**
 ```bash
    git clone <repo-url>
    cd app
 ```
 
-2. **Install pre-commit hooks**
+2. **Install pre-commit hooks:**
 ```bash
    pre-commit install
 ```
@@ -95,12 +90,16 @@ docker-compose down
 1. **Configure backend**
 
    -  Create backend.tf with your S3 bucket details
+   Go to the terraform directory:
+   ```bash
+   cd terraform
+   ```
 ```bash
    terraform {
      backend "s3" {
        bucket = "your-terraform-state-bucket"
        key    = "uptime-kuma/terraform.tfstate"
-       region = "us-east-1"
+       region = "your-region"
      }
    }
 ```
@@ -108,8 +107,7 @@ docker-compose down
 2. **Set infrastructure variables**
  - Edit terraform.tfvars with your values.
 ```bash
-   cp terraform.tfvars.example terraform.tfvars
-  
+   cp tfvars.example terraform.tfvars
 ```
 
 3. **Configure GitHub OIDC**
@@ -129,11 +127,7 @@ docker-compose down
 |----------|---------|---------|
 | Docker Build | App/Dockerfile changes | Build → Trivy scan → Push to ECR |
 | Terraform Plan | Pull Request | tfsec scan → Plan → Comment PR |
-| Terraform Apply | Merge to `main` | Apply changes automatically |
+| Terraform Apply | Merge to main | Apply changes automatically |
 | Terraform Destroy | Manual dispatch | Destroy with confirmation |
 
 **Security:** OIDC authentication, Trivy vulnerability scanning, tfsec IaC analysis
-
----
-
-Successful pipeline
