@@ -2,9 +2,22 @@
 
 This project showcases a production-grade deployment of a self-hosted monitoring tool (Uptime Kuma) using ECS Fargate, RDS Multi-AZ, and EFS. The infrastructure is managed through modular Terraform and GitHub Actions CI/CD.
 
+
+## Related Documentations
+**- Design Decisions:** For a detailed breakdown of the architecture and choices, see the [Design Decisions Repository](https://github.com/ramlaburhan/design_decisions.md)
+**- Future improvements:** For planned future iterations and enhancements, please see the [future Improvements Repository](https://github.com/ramlaburhan/future_improvements.md)
+
+
 ## Table of contents
 
-
+Demo
+Architecture Diagram
+Project Structure
+Prerequisites
+Key Features
+Local Development
+AWS Deployment
+CI/CD Pipelines
 
 
 
@@ -15,10 +28,11 @@ Project management
 
 
 
-## Design and tradeoff
 
 ## Architecture diagram
 <img width="1131" height="1370" alt="ECS Project- 3-tier architecture drawio (1)" src="https://github.com/user-attachments/assets/16865c6d-d6fd-4f3a-8aac-6703774689a0" />
+
+
 
 
 ## Project structure
