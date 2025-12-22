@@ -35,6 +35,23 @@ Project management
 **AWS:** Administrative access, Route53 hosted zone, domain for ACM
 
 ---
+
+## Key Features
+ **- High Availability:** - Multi-AZ deployment across all layers  
+ **- Auto-scaling:** - CPU/Memory-based ECS task scaling  
+ **- Encrypted at Rest:** - RDS (KMS), EFS, Secrets Manager  
+ **- Encrypted in Transit:** - TLS termination at ALB  
+ **- Github Action:** - Infrastructure changes via PR workflow  
+ **- Non-root Containers:** - Security-hardened Docker images  
+ **- Zero Downtime:** Rolling deployments with health checks 
+
+## Monitoring & Operations
+**- Logs:** CloudWatch Logs with retention policies
+**- Metrics:** CloudWatch metrics for ECS, RDS, ALB
+**- Backups:** Automated RDS snapshots with configurable retention
+
+---
+
 ## Local Development
 
 1. **Clone repository**
