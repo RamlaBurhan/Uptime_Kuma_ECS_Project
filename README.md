@@ -67,7 +67,7 @@ This project showcases a production-grade deployment of a self-hosted monitoring
    cd app
 ```
 
-2. **Install pre-commit hooks:**
+2. **Install pre-commit hooks locally:**
 ```bash
    pre-commit install
 ```
