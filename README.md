@@ -46,9 +46,9 @@ Project management
  **- Zero Downtime:** Rolling deployments with health checks 
 
 ## Monitoring & Operations
-**- Logs:** CloudWatch Logs with retention policies
-**- Metrics:** CloudWatch metrics for ECS, RDS, ALB
-**- Backups:** Automated RDS snapshots with configurable retention
+**- Logs:** CloudWatch Logs with retention policies \
+**- Metrics:** CloudWatch metrics for ECS, RDS, ALB \
+**- Backups:** Automated RDS snapshots with configurable retention \
 
 ---
 
