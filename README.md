@@ -4,8 +4,8 @@ This project showcases a production-grade deployment of a self-hosted monitoring
 
 
 ## Related Documentations
-**- Design Decisions:** For a detailed breakdown of the architecture and tradeoffs, see the [Design Decisions Repository](https://github.com/ramlaburhan/design_decisions.md) \
-**- Future improvements:** For planned future iterations and enhancements, please see the [Future Improvements Repository](https://github.com/ramlaburhan/future_improvements.md)
+- For a detailed breakdown of the architecture and tradeoffs, see the [Design Decisions Repository](https://github.com/ramlaburhan/design_decisions.md) \
+- For planned future iterations and enhancements, please see the [Future Improvements Repository](https://github.com/ramlaburhan/future_improvements.md)
 
 
 ## Table of Contents
@@ -25,6 +25,7 @@ This project showcases a production-grade deployment of a self-hosted monitoring
 
 ## Project management
 
+<img width="1175" height="610" alt="Screenshot 2025-12-22 at 22 52 25" src="https://github.com/user-attachments/assets/234f54ce-5841-47b2-86cf-94946a26d9ef" />
 
 
 ## Architecture Diagram
