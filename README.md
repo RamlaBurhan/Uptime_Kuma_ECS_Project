@@ -11,17 +11,14 @@ This project showcases a production-grade deployment of a self-hosted monitoring
 ## Demo
 
 Project management
-<img width="559" height="383" alt="Screenshot 2025-12-22 at 08 02 33" src="https://github.com/user-attachments/assets/eeba51b8-942c-4b29-93be-cc27a727663c" />
+<img width="1121" height="603" alt="Screenshot 2025-12-22 at 08 16 12" src="https://github.com/user-attachments/assets/fcee124a-5459-4e34-a747-d33b3b44f03f" />
+
 
 
 ## Design and tradeoff
 
-
-
 ## Architecture diagram
-
-<img width="565" height="370" alt="ECS Project- 3-tier architecture drawio (1)" src="https://github.com/user-attachments/assets/137a48c7-18ac-4588-9a0f-a59f2373342db" />
-
+<img width="1131" height="1370" alt="ECS Project- 3-tier architecture drawio (1)" src="https://github.com/user-attachments/assets/16865c6d-d6fd-4f3a-8aac-6703774689a0" />
 
 
 ## Project structure
