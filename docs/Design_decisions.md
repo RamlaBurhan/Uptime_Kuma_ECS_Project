@@ -128,7 +128,7 @@ No direct internet to compute or data layers.
 
 **Decision:** Single-AZ in dev (recreate from backups if needed) and Multi-AZ in prod.
 
-**AWS Pricing:** [Instance Database Pricing](https://instances.vantage.sh/aws/rds/db.t3.micro?currency=USD)
+**AWS Pricing:** [Instance Database Pricing](https://instances.vantage.sh/aws/rds/db.t3.micro?currency=USD) \
 **AWS Pricing:** [RDS Pricing Calculator](https://aws.amazon.com/rds/pricing/)
 
 ---
@@ -154,31 +154,31 @@ No direct internet to compute or data layers.
 
 --- 
 
-## 4. Architecture Key Components
-### 4.1. Docker
-**- Non-root user:** For enhanced security
-**- Dockerfile:** Multi-stage Dockerfile to create smaller and more secure images
+## 4. Architecture Key Components \
+### 4.1. Docker \
+**- Non-root user:** For enhanced security \
+**- Dockerfile:** Multi-stage Dockerfile to create smaller and more secure images \
 **- Health checks:** To ensure containers are running properly
 
-### 4.2. Terraform (Infrastructure as Code)
-**- ECS Fargate:** Serverless container orchestration in private subnets
-**- ECS Scaling:** Target tracking policies on CPU and Memory (70%)
-**- RDS Multi-AZ:** MariaDB with automated backups (RDS snapshots) and KMS encryption
-**- Application Load Balancer:** HTTPS termination with ACM certificates
-**- VPC:** Three-tier architecture (public, private app, private RDS subnets)
-**- NAT Gateways:** High availability outbound connectivity across 2 AZs
-**- Secrets Manager:** Encrypted credential storage with KMS
-**- Route 53:** DNS management with ACM certificate validation
-**- Remote State:** S3 backend with native state locking for team collaboration
-**- Monitoring:**
-    • CloudWatch Logs with retention policies
+### 4.2. Terraform (Infrastructure as Code) \
+**- ECS Fargate:** Serverless container orchestration in private subnets \
+**- ECS Scaling:** Target tracking policies on CPU and Memory (70%) \
+**- RDS Multi-AZ:** MariaDB with automated backups (RDS snapshots) and KMS encryption \
+**- Application Load Balancer:** HTTPS termination with ACM certificates \
+**- VPC:** Three-tier architecture (public, private app, private RDS subnets) \
+**- NAT Gateways:** High availability outbound connectivity across 2 AZs \
+**- Secrets Manager:** Encrypted credential storage with KMS \
+**- Route 53:** DNS management with ACM certificate validation \
+**- Remote State:** S3 backend with native state locking for team collaboration \
+**- Monitoring:** \
+    • CloudWatch Logs with retention policies \
     • CloudWatch metrics for ECS, RDS, ALB
 
 
-### 4.3. CI/CD (GitHub Actions)
-**- Docker workflow:** Build, scan with Trivy, push to ECR on Dockerfile or App changes
-**- Terraform Plan:** Runs on pull requests
-**- Terraform Apply:** Automated deployment on merge to main
-**- Terraform Destroy:** Manual workflow with confirmation to prevent accidents
-**- tfsec:** Security scanning for Terraform code vulnerabilities
+### 4.3. CI/CD (GitHub Actions) \
+**- Docker workflow:** Build, scan with Trivy, push to ECR on Dockerfile or App changes \
+**- Terraform Plan:** Runs on pull requests \
+**- Terraform Apply:** Automated deployment on merge to main \
+**- Terraform Destroy:** Manual workflow with confirmation to prevent accidents \
+**- tfsec:** Security scanning for Terraform code vulnerabilities \
 **- OIDC:** AWS keys stored in OIDC for credential protection
