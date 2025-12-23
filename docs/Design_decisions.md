@@ -31,7 +31,7 @@
 
 ## 1. Introduction
 
-In this document, I present the key architectural decisions and trade-offs I've made in designing our infrastructure, providing a clear justification for my approach.
+In this document, I present the key architectural decisions and trade-offs I've made in designing my infrastructure, providing a clear justification for my approach.
 
 ### 1.1. Current State
 - Single environment with feature toggles
@@ -46,6 +46,8 @@ In this document, I present the key architectural decisions and trade-offs I've 
 - Better resource management
 - Simplified maintenance
 
+---
+
 **Note: This documentation is a justification of my approach. There's room for future improvements.**
 
 ## 2. Architecture Design: Decisions & Trade-offs
@@ -58,6 +60,8 @@ In this document, I present the key architectural decisions and trade-offs I've 
 
 No direct internet to compute or data layers.
 
+---
+
 ### 2.2. Container Optimisation
 
 **Decision:** Implement multi-stage Docker builds.
@@ -66,6 +70,8 @@ No direct internet to compute or data layers.
 - Image size reduced from 1.2GB to 127MB (80% reduction)
 - Reduces the attack surface
 - Faster builds and deployments
+
+---
 
 ### 2.3. Credential Security: OIDC for GitHub Actions
 
@@ -76,6 +82,8 @@ No direct internet to compute or data layers.
 - No long-term credentials stored in GitHub secrets
 - Near-zero credential leakage risk
 
+---
+
 ### 2.4. ECS Auto-Scaling Strategy
 
 **Configuration:** Scale-out at 70% CPU & Memory, scale-in at 30% CPU & Memory 
@@ -84,6 +92,7 @@ No direct internet to compute or data layers.
 
 **Note:** These thresholds are baseline values and would be refined based on CloudWatch metrics analysis and observed traffic patterns in production.
 
+---
 
 ### 2.5. Terraform Implementation
 
@@ -154,13 +163,13 @@ No direct internet to compute or data layers.
 
 --- 
 
-## 4. Architecture Key Components \
-### 4.1. Docker \
+## 4. Architecture Key Components 
+### 4.1. Docker 
 **- Non-root user:** For enhanced security \
 **- Dockerfile:** Multi-stage Dockerfile to create smaller and more secure images \
 **- Health checks:** To ensure containers are running properly
 
-### 4.2. Terraform (Infrastructure as Code) \
+### 4.2. Terraform (Infrastructure as Code) 
 **- ECS Fargate:** Serverless container orchestration in private subnets \
 **- ECS Scaling:** Target tracking policies on CPU and Memory (70%) \
 **- RDS Multi-AZ:** MariaDB with automated backups (RDS snapshots) and KMS encryption \
@@ -175,7 +184,7 @@ No direct internet to compute or data layers.
     • CloudWatch metrics for ECS, RDS, ALB
 
 
-### 4.3. CI/CD (GitHub Actions) \
+### 4.3. CI/CD (GitHub Actions) 
 **- Docker workflow:** Build, scan with Trivy, push to ECR on Dockerfile or App changes \
 **- Terraform Plan:** Runs on pull requests \
 **- Terraform Apply:** Automated deployment on merge to main \
