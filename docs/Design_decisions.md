@@ -7,7 +7,7 @@
 
 ## Table of Contents
 - [Introduction](#introduction)
-- [Architecture Design: Decisions & Trade-offs](#architecture-design-decisions-trade-offs)
+- [Decisions & Trade-offs](#decisions-trade-offs)
 - [Infrastructure Cost Optimisation](#infrastructure-cost-optimisation)
 - [ Architecture Key Components](#architecture-key-components)
   
@@ -33,7 +33,7 @@ In this document, I present the key architectural decisions and trade-offs I've 
 
 **Note: This documentation is a justification of my approach. There's room for future improvements.**
 
-##  Architecture Design: Decisions & Trade-offs
+##  Decisions and Trade-offs
 
 ### 2.1. Network Isolation
 
@@ -146,7 +146,7 @@ No direct internet to compute or data layers.
 
 --- 
 
-## 4. Architecture Key Components 
+##  Architecture Key Components 
 ### 4.1. Docker 
 **- Non-root user:** For enhanced security \
 **- Dockerfile:** Multi-stage Dockerfile to create smaller and more secure images \
