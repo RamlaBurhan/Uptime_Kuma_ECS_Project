@@ -24,8 +24,6 @@ services:
     depends_on:
       mariadb:
         condition: service_started
-    volumes:
-      - uptime-kuma-data:/app/data
     networks:
       - app-network
 
@@ -35,4 +33,4 @@ networks:
 
 volumes:
   mariadb-data:
-  uptime-kuma-data:
+

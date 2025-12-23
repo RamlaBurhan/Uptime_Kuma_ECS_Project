@@ -4,4 +4,3 @@
         <input id="GrafanaOncallURL" v-model="$parent.notification.GrafanaOncallURL" type="text" class="form-control" required>
     </div>
 </template>
-

@@ -9,4 +9,3 @@
         <input id="freemobilePass" v-model="$parent.notification.freemobilePass" type="text" class="form-control" required>
     </div>
 </template>
-

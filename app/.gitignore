@@ -31,3 +31,7 @@ data*/
 !.env.example
 /private
 *.local
+.eslintrc.js
+.stylelintrc
+CNAME
+ecosystem.config.js

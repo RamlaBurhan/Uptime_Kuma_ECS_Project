@@ -569,4 +569,3 @@ const { TCPMonitorType } = require("./monitor-types/tcp.js");
 const { ManualMonitorType } = require("./monitor-types/manual");
 const { RedisMonitorType } = require("./monitor-types/redis");
 const Monitor = require("./model/monitor");
-

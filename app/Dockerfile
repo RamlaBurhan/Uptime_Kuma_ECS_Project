@@ -9,18 +9,16 @@ FROM node:20-alpine@sha256:643e7036aa985317ebfee460005e322aa550c6b6883000d01daef
 RUN apk add --no-cache curl
 RUN addgroup -S app && adduser -S app -G app
 WORKDIR /app
-RUN mkdir -p /app/data && \
-    chown -R app:app /app
+RUN chown -R app:app /app
 COPY --chown=app:app package*.json ./
 USER app
 RUN npm ci --only=production --legacy-peer-deps
 COPY --chown=app:app --from=builder /app/dist ./dist
 COPY --chown=app:app --from=builder /app/server ./server
-COPY --chown=app:app --from=builder /app/src ./src  
-COPY --chown=app:app --from=builder /app/db ./db  
+COPY --chown=app:app --from=builder /app/src ./src
+COPY --chown=app:app --from=builder /app/db ./db
 EXPOSE 3001
 
 HEALTHCHECK CMD curl -f http://localhost:3001/health || exit 1
 
 CMD ["node", "server/server.js"]
-
