@@ -4,8 +4,8 @@ This project showcases a production-grade deployment of a self-hosted monitoring
 
 
 ## Related Documentations
-- For a detailed breakdown of the architecture and tradeoffs, see the [Design Decisions Repository](https://github.com/RamlaBurhan/Uptime_Kuma_ECS_Project/blob/main/docs/Design_decisions.md)
-- For planned future iterations and enhancements, please see the [Future Improvements Repository]([https://github.com/ramlaburhan/design_decisions.md)
+- For a detailed breakdown of the architecture and tradeoffs, see the [Design Decisions Directory](https://github.com/RamlaBurhan/Uptime_Kuma_ECS_Project/blob/main/docs/Design_decisions.md)
+- For planned future iterations and enhancements, please see the [Future Improvements Directory](https://github.com/RamlaBurhan/Uptime_Kuma_ECS_Project/blob/main/docs/Future_improvements.md)
 
 
 ## Table of Contents
