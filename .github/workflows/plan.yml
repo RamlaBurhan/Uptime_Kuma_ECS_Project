@@ -27,6 +27,7 @@ jobs:
         with:
           role-to-assume: ${{ secrets.ADMIN_ARN }}
           aws-region: ${{ env.AWS_REGION }}
+    
       
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
@@ -35,6 +36,12 @@ jobs:
       
       - name: Terraform Init
         run: terraform init
+
+      - name: Create terraform.tfvars from secret
+        run: |
+          cat <<'EOF' > terraform.tfvars
+          ${{ secrets.TFVARS }}
+          EOF  
       
       - name: Terraform Format Check
         id: fmt
