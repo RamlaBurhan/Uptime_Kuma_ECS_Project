@@ -29,7 +29,7 @@
 
 ## 1. Introduction
 
-In this document, I present the key architectural decisions and trade-offs I've made in designing my infrastructure, providing a clear justification for my approach.
+In this document, I present the key architectural decisions and trade-offs I've made in designing my infrastructure.
 
 ### 1.1. Current State
 - Single environment with feature toggles
