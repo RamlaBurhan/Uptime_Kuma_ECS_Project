@@ -4,28 +4,32 @@
 
 </center>
 
-# Table of Contents
+
+## Table of Contents
 1. [Introduction](#introduction)
    1.1. [Current State](#current-state)
    1.2. [Future State](#future-state)
    1.3. [Benefits of Isolated Infrastructure](#benefits-of-isolated-infrastructure)
-2. [Architecture Design: Decisions & Trade-offs](#architecture-design-decisions--trade-offs)
+
+2. [Architecture Design: Decisions & Trade-offs](#architecture-design-decisions-trade-offs)
    2.1. [Network Isolation](#network-isolation)
    2.2. [Container Optimisation](#container-optimisation)
    2.3. [Credential Security: OIDC for GitHub Actions](#credential-security-oidc-for-github-actions)
    2.4. [ECS Auto-Scaling Strategy](#ecs-auto-scaling-strategy)
    2.5. [Terraform Implementation](#terraform-implementation)
+
 3. [Infrastructure Cost Optimisation](#infrastructure-cost-optimisation)
    3.1. [NAT Gateway Strategy](#nat-gateway-strategy)
-   3.2. [RDS Multi-AZ: When 2x Cost Makes Sense](#rds-multi-az-when-2x-cost-makes-sense)
+   3.2. [RDS Multi-AZ](#RDS-Multi-AZ)
    3.3. [Secrets Manager: Store Only Password](#secrets-manager-store-only-password)
    3.4. [Log Retention: Aligning Policy with Needs](#log-retention-aligning-policy-with-needs)
+
 4. [Architecture Key Components](#architecture-key-components)
    4.1. [Docker](#docker)
    4.2. [Terraform (Infrastructure as Code)](#terraform-infrastructure-as-code)
    4.3. [CI/CD (GitHub Actions)](#cicd-github-actions)
 
-## Introduction
+## 1. Introduction
 
 In this document, I present the key architectural decisions and trade-offs I've made in designing our infrastructure, providing a clear justification for my approach.
 
@@ -114,7 +118,7 @@ No direct internet to compute or data layers.
 
 ---
 
-### 3.2. RDS Multi-AZ:
+### 3.2. RDS Multi-AZ
 
 **Cost:** Approx $29/month (Multi-AZ db.t3.micro) vs Approx $16/month (Single-AZ) - Cost includes instance/storage/backup storage
 
