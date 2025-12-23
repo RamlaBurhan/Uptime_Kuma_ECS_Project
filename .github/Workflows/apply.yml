@@ -1,0 +1,41 @@
+name: Terraform Apply
+
+on:
+  push:
+    branches: [main]
+  Paths:
+  - "terraform/**"
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  terraform-apply:
+    runs-on: ubuntu-latest
+    
+    env:
+      TF_VERSION: '1.14.2'
+      AWS_REGION: 'us-east-1'
+     
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      
+      - name: Configure AWS credentials w/ OIDC
+        uses: aws-actions/configure-aws-credentials@v4 
+        with:
+          role-to-assume: ${{ secrets.ADMIN_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+      
+      - name: Install Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: ${{ env.TF_VERSION }}
+      
+      - name: Terraform Init
+        run: terraform init
+      
+      - name: Terraform Apply
+        run: terraform apply -auto-approve
+        
