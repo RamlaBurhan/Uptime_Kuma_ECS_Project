@@ -7,7 +7,7 @@
 
 ## Table of Contents
 - [Introduction](#introduction)
-- [Decisions and Trade-offs](#decisions-trade-offs)
+- [Decisions and Trade offs](#decisions-trade-offs)
 - [Infrastructure Cost Optimisation](#infrastructure-cost-optimisation)
 - [ Architecture Key Components](#architecture-key-components)
   
