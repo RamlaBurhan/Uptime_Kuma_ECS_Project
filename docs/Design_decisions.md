@@ -33,7 +33,7 @@ In this document, I present the key architectural decisions and trade-offs I've 
 
 **Note: This documentation is a justification of my approach. There's room for future improvements.**
 
-##  Decisions and Trade-offs
+##  Decisions and Tradeoffs
 
 ### 2.1. Network Isolation
 
