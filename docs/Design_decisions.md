@@ -1,13 +1,13 @@
 <center>
 
-# Infrastructure Architecture Design: Decisions, Trade-offs and Cost Optimisation
+# Infrastructure Architecture Design: Decisions, Tradeoffs and Cost Optimisation
 
 </center>
 
 
 ## Table of Contents
 - [Introduction](#introduction)
-- [Decisions and Trade offs](#decisions-trade-offs)
+- [Decisions and Tradeoffs](#decisions-trade-offs)
 - [Infrastructure Cost Optimisation](#infrastructure-cost-optimisation)
 - [ Architecture Key Components](#architecture-key-components)
   
