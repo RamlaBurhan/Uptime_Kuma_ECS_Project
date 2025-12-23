@@ -32,3 +32,4 @@ variable "container_port" {
   description = "Application container port"
   type        = string
 }
+
