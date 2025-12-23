@@ -9,20 +9,20 @@
 1. [Introduction](#introduction) \
    1.1. [Current State](#current-state) \
    1.2. [Future State](#future-state) \
-   1.3. [Benefits of Isolated Infrastructure](#benefits-of-isolated-infrastructure) \
+   1.3. [Benefits of Isolated Infrastructure](#benefits-of-isolated-infrastructure) 
 
 2. [Architecture Design: Decisions & Trade-offs](#architecture-design-decisions-trade-offs) \
    2.1. [Network Isolation](#network-isolation) \
    2.2. [Container Optimisation](#container-optimisation) \
    2.3. [Credential Security: OIDC for GitHub Actions](#credential-security-oidc-for-github-actions) \
    2.4. [ECS Auto-Scaling Strategy](#ecs-auto-scaling-strategy) \
-   2.5. [Terraform Implementation](#terraform-implementation) \
+   2.5. [Terraform Implementation](#terraform-implementation) 
 
 3. [Infrastructure Cost Optimisation](#infrastructure-cost-optimisation) \
    3.1. [NAT Gateway Strategy](#nat-gateway-strategy) \
    3.2. [RDS Multi-AZ](#RDS-Multi-AZ) \
    3.3. [Secrets Manager: Store Only Password](#secrets-manager-store-only-password) \
-   3.4. [Log Retention: Aligning Policy with Needs](#log-retention-aligning-policy-with-needs) \
+   3.4. [Log Retention: Aligning Policy with Needs](#log-retention-aligning-policy-with-needs) 
 
 4. [Architecture Key Components](#architecture-key-components) \
    4.1. [Docker](#docker) \
