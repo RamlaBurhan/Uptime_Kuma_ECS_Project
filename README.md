@@ -10,7 +10,7 @@ This project showcases a production-grade deployment of a self-hosted monitoring
 
 ## Table of Contents
 - [Demo](#demo)
-- [Project management](£project-management)
+- [Project management](#project-management)
 - [Architecture Diagram](#architecture-diagram)
 - [Project Structure](#project-structure)
 - [Prerequisites](#prerequisites)
@@ -39,9 +39,7 @@ This project showcases a production-grade deployment of a self-hosted monitoring
 
 ## Prerequisites
 
-**Tools:** Terraform ≥1.6, Docker ≥20.10, AWS CLI, pre-commit ≥3.0
-
-**AWS:** Administrative access, Route53 hosted zone, domain for ACM
+**Tools:** Terraform, Docker, pre-commit and AWS access & CLI 
 
 ---
 
