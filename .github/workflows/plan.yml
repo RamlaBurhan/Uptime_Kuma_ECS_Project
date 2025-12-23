@@ -13,11 +13,18 @@ permissions:
 jobs:
   terraform-plan:
     runs-on: ubuntu-latest
-    
+
+
+    defaults:
+      run:
+        working-directory: ./terraform
+        
     env:
       TF_VERSION: '1.6.0'
       AWS_REGION: 'us-east-1'
-    
+      
+
+     
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
