@@ -1,12 +1,25 @@
-# Deploying a Self-Hosted Monitoring Tool (Uptime-Kuma) with AWS ECS Fargate, RDS, and EFS
+# # Production-Grade Monitoring Deployment on AWS ECS Fargate
 
-This project showcases a production-grade deployment of a self-hosted monitoring tool (Uptime Kuma) using ECS Fargate, RDS Multi-AZ, and EFS. The infrastructure is managed through modular Terraform and GitHub Actions CI/CD.
+High-availability deployment of Uptime Kuma using ECS Fargate and RDS Multi-AZ (Primary & Standby). The infrastructure is managed with Terraform and GitHub Actions CI/CD.
 
 
-## Related Documentations
-- For a detailed breakdown of the architecture and tradeoffs, see the [Design Decisions Directory](https://github.com/RamlaBurhan/Uptime_Kuma_ECS_Project/blob/main/docs/Design_decisions.md)
-- For planned future iterations and enhancements, please see the [Future Improvements Directory](https://github.com/RamlaBurhan/Uptime_Kuma_ECS_Project/blob/main/docs/Future_improvements.md)
+### 📊 [View Live Status Page](https://www.rb-monitoring.com/status/services-health)
 
+*Real-time monitoring of DNS, ALB, ECS, and RDS availability*
+
+**Active Monitors:**
+- HTTP GET requests: Full user journey (DNS → ALB → ECS containers)
+- DNS-only validation: Route53 record resolution
+- TCP connectivity: RDS MariaDB on port 3306
+- Response time tracking with 90-day uptime history
+
+---
+
+<div align="center">
+   
+**Documentation:** [Architecture Decisions](https://github.com/RamlaBurhan/Uptime_Kuma_ECS_Project/blob/main/docs/Design_decisions.md) | [Cost Analysis]() | [Future Improvements](https://github.com/RamlaBurhan/Uptime_Kuma_ECS_Project/blob/main/docs/Future_improvements.md)
+
+</div>
 
 ## Table of Contents
 - [Demo](#demo)
@@ -21,7 +34,18 @@ This project showcases a production-grade deployment of a self-hosted monitoring
 
 ---
 
-## Demo
+**Live Demo**
+
+
+<div style="position: relative; padding-bottom: 56.42633228840126%; height: 0;"><iframe src="https://www.loom.com/embed/c2b4e52a6f7344f6983eccd27522c598" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
+<div align="center">
+   
+**This deployment is currently monitoring its own services 24/7:**
+
+</div>
+
+----
 
 ## Project management
 
@@ -39,7 +63,11 @@ This project showcases a production-grade deployment of a self-hosted monitoring
 
 ## Prerequisites
 
-**Tools:** Terraform, Docker, pre-commit and AWS access & CLI 
+**Tools:** 
+- Terraform >= 1.5.0
+- Docker Engine >= 20.10
+- AWS CLI v2 with configured credentials
+- pre-commit >= 3.0.0
 
 ---
 
@@ -72,11 +100,12 @@ This project showcases a production-grade deployment of a self-hosted monitoring
 
 3. **Start application:**
 ```bash
-   docker-compose up -d
+   docker compose build
+   docker compose up -d
 ```
 
 4. **To access the application:**  
-   Navigate to http://localhost:3001
+   Open http://localhost:3001
 
 **To stop:**
 ```bash
