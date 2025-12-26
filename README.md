@@ -12,8 +12,11 @@ High-availability deployment of Uptime Kuma using ECS Fargate and RDS Multi-AZ (
 
 ## Live deployment
 
-[View Live Status Page](https://www.rb-monitoring.com/status/services-health)
+**Note:** Infrastructure has been torn down. This is a historical record of the last active status.
 
+[View Live Status Page](https://www.rb-monitoring.com/status/services-health)  
+
+---
 **Real-time monitoring of rb-monitoring.com: DNS, ALB, ECS, and RDS availability**
 
 **Active Monitors:**
@@ -21,6 +24,15 @@ High-availability deployment of Uptime Kuma using ECS Fargate and RDS Multi-AZ (
 - DNS-only validation: Route53 record resolution
 - TCP connectivity: RDS MariaDB on port 3306
 - Response time tracking with 90-day uptime history
+
+---
+## ## Last Live Status
+
+**Below is a screenshot showing the final operational state before infrastructure teardown:**
+
+<img width="1541" height="873" alt="Screenshot 2025-12-26 at 22 36 17" src="https://github.com/user-attachments/assets/8da5dccb-4702-40f8-a989-ccc311cb79f2" />
+
+**Screenshot taken on [26/12/25] before infrastructure teardown**
 
 ---
 
