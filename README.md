@@ -2,17 +2,19 @@
 
 High-availability deployment of Uptime Kuma using ECS Fargate and RDS Multi-AZ (Primary & Standby). The infrastructure is managed with Terraform and GitHub Actions CI/CD.
 
+**Infrastructure Highlights:**
+- Modular Terraform design with remote state (S3 + DynamoDB locking)
+- Custom domain with TLS termination (Route53 + ACM)
+- RDS MariaDB with automated backups (7-day retention) and KMS encryption
+- Docker multi-stage builds (89% image size reduction: 1.2GB → 127MB)
+
 ---
 
-**Documentation:** [Architecture Decisions](https://github.com/RamlaBurhan/Uptime_Kuma_ECS_Project/blob/main/docs/Design_decisions.md) | [Cost Analysis]() | [Future Improvements](https://github.com/RamlaBurhan/Uptime_Kuma_ECS_Project/blob/main/docs/Future_improvements.md)
-
-
----
 ## Live deployment
 
 [View Live Status Page](https://www.rb-monitoring.com/status/services-health)
 
-*Real-time monitoring of rb-monitoring.com: DNS, ALB, ECS, and RDS availability*
+**Real-time monitoring of rb-monitoring.com: DNS, ALB, ECS, and RDS availability**
 
 **Active Monitors:**
 - HTTP GET requests: Full user journey (DNS → ALB → ECS containers)
@@ -24,7 +26,7 @@ High-availability deployment of Uptime Kuma using ECS Fargate and RDS Multi-AZ (
 
 ## Demo
 
-**Demo Walkthrough:** [Watch on Loom](https://www.loom.com/share/c2b4e52a6f7344f6983eccd27522c598)
+### **Demo Walkthrough:** [Watch on Loom](https://www.loom.com/share/c2b4e52a6f7344f6983eccd27522c598)
 
 ----
 
@@ -34,15 +36,17 @@ High-availability deployment of Uptime Kuma using ECS Fargate and RDS Multi-AZ (
 
 ----
 
-## What This Project Demonstrates
+## This Project Demonstrates:
+
+| Domain | Implementation |
 |--------|----------------|
-| **Infrastructure as Code** | Modular Terraform with remote state (S3 + DynamoDB locking), reusable modules for VPC/ECR/ECS/RDS/IAM/ALB/ACM/ROUTE53 |
-| **Container Orchestration** | health check integration, auto-scaling policies,  |
+| **Infrastructure as Code** | Modular Terraform with remote state (S3 + DynamoDB locking), reusable modules |
+| **Container Orchestration** | Health check integration, auto-scaling policies |
 | **Database Management** | RDS MariaDB Multi-AZ with automated backups, encryption at rest (KMS) |
-| **Networking & Security** | Multi-tier VPC, least-privilege security groups, TLS termination, 
-| **CI/CD** | GitHub Actions for infrastructure changes, security scanning (Trivy),OIDC authentication, PR-based approvals |
+| **Networking & Security** | Multi-tier VPC, least-privilege security groups, TLS termination |
+| **CI/CD** | GitHub Actions for infrastructure changes, security scanning (Trivy), OIDC authentication, PR-based approvals |
 | **High Availability** | Multi-AZ deployment across compute/database layers, auto-scaling (CPU/memory thresholds) |
-| **Observability** | CloudWatch Logs with retention policies, custom metrics, |
+| **Observability** | CloudWatch Logs with retention policies, Container Insights enabled |
 
 ---
 
@@ -59,11 +63,7 @@ High-availability deployment of Uptime Kuma using ECS Fargate and RDS Multi-AZ (
 ├── app/
 │   ├── docker-compose.yml         
 │   └── Dockerfile                 
-├── docs/
-│   ├── Cost_analysiss.md      
-│   ├── Design_decisions.md        
-│   ├── Future_improvements.md     
-│   └── Self-study.md              
+├       
 ├── terraform/
 │   ├── modules/
 │   │   ├── acm/                   
@@ -95,8 +95,8 @@ High-availability deployment of Uptime Kuma using ECS Fargate and RDS Multi-AZ (
 **Tools:** 
 - Terraform >= 1.14.2
 - Docker Engine >= 28.3.2
-- AWS CLI v2 with configured credentials
 - pre-commit >= 4.5.1
+- Aws account
 
 ---
 
@@ -113,16 +113,18 @@ High-availability deployment of Uptime Kuma using ECS Fargate and RDS Multi-AZ (
    pre-commit install
 ```
 
-3. **To build and start containersn**
+3. **To build and start containers**
 ```bash
    docker compose build
    docker compose up -d
 ```
 
 4. **To access the application:**  
+```bash
    Open http://localhost:3001
+```
 
-5. **To stop:**
+5. **To stop container:**
 ```bash
    docker-compose down
 ```
@@ -130,35 +132,35 @@ High-availability deployment of Uptime Kuma using ECS Fargate and RDS Multi-AZ (
 ## AWS Deployment
 
 1. **Configure backend**
-
-   -  Create backend.tf with your S3 bucket details manually
-   Go to the terraform directory:
-   ```bash
+- Go to the terraform directory 
+```bash
    cd terraform
-   ```
+ ```
+- Create backend.tf with your S3 bucket details manually 
+
 ```bash
    terraform {
      backend "s3" {
        bucket = "your-terraform-state-bucket"
-       key    = "uptime-kuma/terraform.tfstate"
+       key    = "terraform/terraform.tfstate"
        region = "your-region"
      }
    }
 ```
 
 2. **Set infrastructure variables**
- - Edit terraform.tfvars with your values.
+- Edit terraform.tfvars with your values.
 ```bash
    cp tfvars.example terraform.tfvars
 ```
 
 3. **Configure GitHub OIDC**
-   - Create `OIDC IAM role` in AWS.
-   - Add role ARN as `ADMIN_ARN` in GitHub repository secrets.
+- Create `OIDC IAM role` in AWS.
+- Add role ARN as `ADMIN_ARN` in GitHub repository secrets.
 
 4. **Deploy Infrastructure:**
+- Create feature branch
 ```bash
-   # Create feature branch
    git checkout -b feature/initial-deployment
    git add terraform/
    git commit -m "Initial infrastructure deployment"
@@ -167,9 +169,10 @@ High-availability deployment of Uptime Kuma using ECS Fargate and RDS Multi-AZ (
    
    **Workflow:**
    1. Open pull request on GitHub
-   2. Review `terraform plan` output.
-   3. Merge PR to `main` branch
-   4. `terraform apply` runs automatically on merge
+   2. Terraform plan runs automatically on pull request
+   3. Merge Pull Request to main branch
+   4. Terraform apply runs automatically on merge
+   
  
 ---
 
@@ -178,8 +181,25 @@ High-availability deployment of Uptime Kuma using ECS Fargate and RDS Multi-AZ (
 | Workflow | Trigger | Actions |
 |----------|---------|---------|
 | Docker Build | App/Dockerfile changes | Build → Trivy scan → Push to ECR |
-| Terraform Plan | Pull Request |  Plan |
+| Terraform Plan | Pull Request | Validate infrastructure changes |
 | Terraform Apply | Merge to main | Apply changes automatically |
 | Terraform Destroy | Manual dispatch | Destroy with confirmation |
 
 **Security:** OIDC authentication and Trivy vulnerability scanning
+
+
+## Future Improvements
+**1. Security & Automation**
+- Create an AWS Lambda to automatically rotate RDS passwords managed by Secrets Manager.
+
+**2. Database Optimisation**
+- Add read replicas for read-heavy monitoring workloads.
+- Include blue-green deployments for zero‑downtime during vertical scaling. Look into alternative deployment patterns.
+
+**3. Infrastructure & Cost**
+- Use Terraform workspaces or Terragrunt for multi‑environment isolation.
+- Implement VPC endpoints for (AWS services).
+
+**4. Observability**
+- Incorporate application and business metrics.
+- Add alerts and dashboards for better visibility.
