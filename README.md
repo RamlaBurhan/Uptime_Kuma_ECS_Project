@@ -196,17 +196,22 @@ High-availability deployment of Uptime Kuma using ECS Fargate and RDS Multi-AZ (
 
 ---
 
-### Terraform Apply
-<img width="528" height="408" alt="TF APPLY" src="https://github.com/user-attachments/assets/33934149-0de3-4265-ba28-074cb08d2833" />
+### Terraform Apply
+
+<img width="414" height="346" alt="TF APPL" src="https://github.com/user-attachments/assets/4149789e-5fce-4764-9498-c27ac2a4e010" />
+
 
 ---
 
 ### Terraform Destroy
-<img width="396" height="345" alt="TF DESTROY" src="https://github.com/user-attachments/assets/a19ca254-e70e-4d2d-ac11-99c2190dc4f9" />
+
+<img width="465" height="295" alt="TF DEST" src="https://github.com/user-attachments/assets/1cf51d26-a78f-45eb-8e54-e30f322a7dee" />
+
 
 ---
 
 ### Docker Build and Push to ECR
+
 <img width="496" height="292" alt="DOCKER" src="https://github.com/user-attachments/assets/cb30384c-c879-4141-b793-d960f7f81f7a" />
 
 ---
