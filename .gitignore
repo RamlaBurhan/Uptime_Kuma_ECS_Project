@@ -57,5 +57,5 @@ logs/
 *.tgz
 *.rar
 
-Documentation
-docs/
+#dont' ignore
+!tfvars_example.md
