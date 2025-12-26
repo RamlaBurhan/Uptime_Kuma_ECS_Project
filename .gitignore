@@ -56,3 +56,6 @@ logs/
 *.tar.gz
 *.tgz
 *.rar
+
+Documentation
+docs/
