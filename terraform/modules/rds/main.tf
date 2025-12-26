@@ -3,19 +3,19 @@ resource "random_password" "db_password" {
   special = true
 }
 
-resource "aws_secretsmanager_secret" "rds_password" {
-  name                    = "${var.project_name}-rds-password"
+resource "aws_secretsmanager_secret" "rds_psswrd" {
+  name                    = "${var.project_name}-rds-psswrd"
   description             = "RDS database password"
   kms_key_id              = aws_kms_key.rds.arn
   recovery_window_in_days = 7
 
   tags = {
-    Name = "${var.project_name}-rds_password"
+    Name = "${var.project_name}-rds_psswrd"
   }
 }
 
 resource "aws_secretsmanager_secret_version" "rds_password" {
-  secret_id     = aws_secretsmanager_secret.rds_password.id
+  secret_id     = aws_secretsmanager_secret.rds_psswrd.id
   secret_string = random_password.db_password.result
 
   lifecycle {
@@ -32,7 +32,7 @@ resource "aws_db_subnet_group" "rds" {
 }
 
 resource "aws_db_instance" "rds" {
-  identifier                      = "${var.project_name}-rds"
+  identifier                      = "${var.project_name}-rds-instance"
   engine                          = var.engine
   engine_version                  = var.engine_version
   instance_class                  = var.instance_class
@@ -65,7 +65,6 @@ resource "aws_db_instance" "rds" {
   }
 }
 
-# These set the retention for CloudWatch logs
 resource "aws_cloudwatch_log_group" "rds_error" {
   name              = "/aws/rds/instance/${var.project_name}-rds/error"
   retention_in_days = var.retention_in_days

@@ -7,7 +7,7 @@
 
 ## Table of Contents
 - [Introduction](#introduction)
-- [Decisions and Tradeoffs](#decisions-trade-offs)
+- [Decisions and Tradeoffs](#decisions-and-tradeoffs)
 - [Infrastructure Cost Optimisation](#infrastructure-cost-optimisation)
 - [ Architecture Key Components](#architecture-key-components)
   
@@ -161,10 +161,10 @@ No direct internet to compute or data layers.
 **- NAT Gateways:** High availability outbound connectivity across 2 AZs \
 **- Secrets Manager:** Encrypted credential storage with KMS \
 **- Route 53:** DNS management with ACM certificate validation \
-**- Remote State:** S3 backend with native state locking for team collaboration \
+**- Remote State:** S3 backend with DynamoDB locking for team collaboration \
 **- Monitoring:** \
     • CloudWatch Logs with retention policies \
-    • CloudWatch metrics for ECS, RDS, ALB
+    • CloudWatch metrics for ECS and RDS
 
 
 ### 4.3. CI/CD (GitHub Actions) 
@@ -172,5 +172,4 @@ No direct internet to compute or data layers.
 **- Terraform Plan:** Runs on pull requests \
 **- Terraform Apply:** Automated deployment on merge to main \
 **- Terraform Destroy:** Manual workflow with confirmation to prevent accidents \
-**- tfsec:** Security scanning for Terraform code vulnerabilities \
 **- OIDC:** AWS keys stored in OIDC for credential protection

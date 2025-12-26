@@ -24,4 +24,3 @@ HEALTHCHECK CMD curl -f http://localhost:3001/health || exit 1
 CMD ["node", "server/server.js"]
 
 
-#test pipeline

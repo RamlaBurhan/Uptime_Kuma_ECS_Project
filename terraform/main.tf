@@ -14,7 +14,6 @@ module "sg" {
   alb_ports    = var.alb_ports
   ecs_port     = var.ecs_port
   db_port      = var.db_port
-  efs_port     = var.efs_port
 }
 
 module "rds" {
@@ -95,7 +94,6 @@ module "ecs" {
   alb_listener_arn        = module.alb.https_listener_arn
   ecr_repository_url      = module.ecr.repository_url
   task_execution_role_arn = module.iam.task_execution_role_arn
-  db_password_secret_arn  = module.rds.db_password_secret_arn
   environment_variables   = local.environment_variables
   log_retention_days      = var.log_retention_days
   secrets                 = local.secrets
@@ -109,11 +107,8 @@ module "ecs-autoscaling" {
   ecs_min_capacity     = var.ecs_min_capacity
   ecs_max_capacity     = var.ecs_max_capacity
   cpu_scale_out_tv     = var.cpu_scale_out_tv
-  cpu_scale_in_t_v     = var.cpu_scale_in_t_v
   memory_scale_out_t_v = var.memory_scale_out_t_v
-  memory_scale_in_t_v  = var.memory_scale_in_t_v
   scale_in_cooldown    = var.scale_in_cooldown
   scale_out_cooldown   = var.scale_out_cooldown
 }
-
 

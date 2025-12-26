@@ -52,12 +52,6 @@ variable "db_port" {
   default     = 3306
 }
 
-variable "efs_port" {
-  description = "db port"
-  type        = string
-  default     = 2049
-
-}
 
 #route53
 variable "record_name" {
@@ -97,11 +91,6 @@ variable "db_type" {
 
 }
 
-variable "db_host" {
-  description = "db host"
-  type        = string
-
-}
 variable "allocated_storage" {
   description = "Allocated storage for database"
   type        = number
@@ -180,20 +169,11 @@ variable "cpu_scale_out_tv" {
 }
 
 
-variable "cpu_scale_in_t_v" {
-  description = "cpu scale in target value"
-  type        = number
-  default     = 70
-}
-
 variable "memory_scale_out_t_v" {
   description = "memory scale out target value"
   type        = number
 }
 
-variable "memory_scale_in_t_v" {
-  type = number
-}
 
 
 variable "scale_in_cooldown" {
@@ -283,8 +263,4 @@ variable "subdomain" {
   type        = list(string)
   default     = []
 }
-
-
-
-
 

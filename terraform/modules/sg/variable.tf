@@ -26,8 +26,3 @@ variable "db_port" {
   type        = string
 }
 
-variable "efs_port" {
-  description = "db port"
-  type        = string
-
-}

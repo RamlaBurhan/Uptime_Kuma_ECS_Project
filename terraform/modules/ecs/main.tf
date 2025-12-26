@@ -53,7 +53,6 @@ resource "aws_ecs_task_definition" "main" {
       environment = var.environment_variables
       secrets     = var.secrets
 
-
       logConfiguration = {
         logDriver = "awslogs"
         options = {
@@ -64,6 +63,7 @@ resource "aws_ecs_task_definition" "main" {
       }
     }
   ])
+
 
   tags = {
     Name = "${var.project_name}-ecs_task"

@@ -97,7 +97,7 @@ resource "aws_route_table" "app" {
   }
 
   tags = {
-    Name = "${var.project_name}-app-${count.index + 1}"
+    Name = "${var.project_name}-app-rt-${count.index + 1}"
   }
 }
 

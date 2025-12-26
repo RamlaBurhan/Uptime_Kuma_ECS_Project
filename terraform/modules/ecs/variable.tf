@@ -89,10 +89,7 @@ variable "task_execution_role_arn" {
   type        = string
 }
 
-variable "db_password_secret_arn" {
-  description = "ARN of the Secrets Manager secret containing the RDS database password"
-  type        = string
-}
+
 
 variable "log_retention_days" {
   description = "Number of days to retain CloudWatch logs"

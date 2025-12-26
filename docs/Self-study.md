@@ -25,4 +25,3 @@ Using IAM roles with Amazon ECS: https://docs.aws.amazon.com/AmazonECS/latest/de
 Uptime-Kuma: https://github.com/louislam/uptime-kuma 
 
 
-https://aws.amazon.com/vpc/pricing/ 

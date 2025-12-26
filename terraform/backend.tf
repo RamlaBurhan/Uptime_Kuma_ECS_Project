@@ -1,9 +1,9 @@
 terraform {
   backend "s3" {
-    bucket       = "terraform-state-uptime-kuma"
-    key          = "terraform/terraform.tfstate"
-    region       = "us-east-1"
-    use_lockfile = true
+    bucket         = "terraform-state-uptime-kuma"
+    key            = "terraform/terraform.tfstate"
+    region         = "us-east-1"
+    use_lockfile   = true
     dynamodb_table = "dynamdb-state-locking"
   }
 }

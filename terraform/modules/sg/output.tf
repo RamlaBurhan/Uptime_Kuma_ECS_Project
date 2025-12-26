@@ -13,7 +13,3 @@ output "db_sg_id" {
   value       = aws_security_group.db_sg.id
 }
 
-output "efs_sg_id" {
-  description = "ID of the EFS filesystem security group"
-  value       = aws_security_group.efs_sg.id
-}

@@ -45,6 +45,6 @@ resource "aws_iam_role_policy_attachment" "ecs_execution_policy" {
 
 resource "aws_iam_role_policy" "ecs_secrets_access_policy" {
   name   = "${var.project_name}-ecs-secrets-access"
-  role   = aws_iam_role.ecs_execution_role.id
+  role   = aws_iam_role.ecs_execution_role.name
   policy = data.aws_iam_policy_document.ecs_secrets_access_policy.json
 }

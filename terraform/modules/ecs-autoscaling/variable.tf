@@ -15,19 +15,12 @@ variable "cpu_scale_out_tv" {
 }
 
 
-variable "cpu_scale_in_t_v" {
-  description = "cpuscale in target value"
-  type        = number
-}
-
 variable "memory_scale_out_t_v" {
   description = "memory scale out target value"
   type        = number
 }
 
-variable "memory_scale_in_t_v" {
-  type = number
-}
+
 
 variable "scale_in_cooldown" {
   description = "Cooldown period for scaling in (seconds)"
