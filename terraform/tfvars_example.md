@@ -1,15 +1,15 @@
 
-project_name = ""
+project_name = "" \
 environment  = "" \
 subdomain    = ""
 
-#VPC 
+#VPC \
 vpc_cidr              = "" \
 subnet_count          = "" \
 enable_nat_gateway_ha = "" \
 region                = ""
 
-#Security group
+#Security group \
 alb_ports = { \
   80  = [""] \
   443 = [""] \
@@ -18,11 +18,11 @@ ecs_port = "" \
 db_port  = "" \
 efs_port = ""
 
-#Route53
+#Route53 \
 domain_name = "" \
 record_name = ""
 
-#RDS 
+#RDS \
 engine                    = "" \
 engine_version            = "" \
 instance_class            = "" \
@@ -42,7 +42,7 @@ retention_in_days         = "" \
 deletion_window_in_days   = ""
 
 
-#ECS autoscaling 
+#ECS autoscaling \
 ecs_min_capacity     = "" \
 ecs_max_capacity     = "" \
 cpu_scale_out_tv     = "" \
@@ -52,7 +52,7 @@ memory_scale_in_t_v  = "" \
 scale_in_cooldown    = "" \
 scale_out_cooldown   = ""
 
-#ECS 
+#ECS \
 container_name     = "" \
 container_port     = "" \
 image_tag          = "" \
@@ -61,5 +61,5 @@ task_memory        = "" \
 desired_count      = "" \
 log_retention_days = ""
 
-#ALB 
+#ALB \
 ssl_policy = ""
