@@ -1,4 +1,4 @@
-#  Vigilo
+# Vigilo
 
 High-availability deployment of Uptime Kuma using ECS Fargate and RDS Multi-AZ (Primary & Standby). The infrastructure is managed with Terraform and GitHub Actions CI/CD.
 
@@ -14,7 +14,7 @@ High-availability deployment of Uptime Kuma using ECS Fargate and RDS Multi-AZ (
 
 **Note:** Infrastructure has been torn down. This is a historical record of the last active status.
 
-[View Live Status Page](https://www.rb-monitoring.com/status/services-health)  
+[View Live Status Page](https://www.rb-monitoring.com/status/services-health)
 
 ---
 **Real-time monitoring of rb-monitoring.com: DNS, ALB, ECS, and RDS availability**
