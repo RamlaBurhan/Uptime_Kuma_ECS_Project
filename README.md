@@ -1,4 +1,4 @@
-#  Production-Grade deployment of Uptime-Kuma on AWS ECS Fargate
+#  Vigilo
 
 High-availability deployment of Uptime Kuma using ECS Fargate and RDS Multi-AZ (Primary & Standby). The infrastructure is managed with Terraform and GitHub Actions CI/CD.
 
